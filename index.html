@@ -765,5 +765,35 @@ document.getElementById("bookingForm").addEventListener("submit", function(e) {
   });
 });
 </script>
+  <script>
+const gallery = document.getElementById("galleryCoverflow");
+const items = document.querySelectorAll(".gallery-item");
+
+function updateActiveGalleryItem(){
+  const center = gallery.scrollLeft + gallery.offsetWidth / 2;
+
+  items.forEach(item => {
+    const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+    const distance = Math.abs(center - itemCenter);
+
+    item.classList.toggle("active", distance < item.offsetWidth / 2);
+  });
+}
+
+function slideGallery(direction){
+  gallery.scrollBy({
+    left: direction * 350,
+    behavior: "smooth"
+  });
+
+  setTimeout(updateActiveGalleryItem, 400);
+}
+
+gallery.addEventListener("scroll", () => {
+  window.requestAnimationFrame(updateActiveGalleryItem);
+});
+
+updateActiveGalleryItem();
+</script>
 </body>
 </html>
