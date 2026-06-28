@@ -182,33 +182,96 @@ nav{
   white-space:nowrap;
 }
 
-/* GALLERY */
-..gallery-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:20px;
+/* APPLE / TESLA COVER FLOW GALLERY */
+.gallery-stage{
+  position:relative;
+  overflow:hidden;
 }
-.gallery-grid img{
 
-    width:100%;
-    aspect-ratio:1/1;
-
-    object-fit:cover;
-
-    border-radius:20px;
-
-    transition:.35s;
-
-    cursor:pointer;
-
-    box-shadow:0 12px 35px rgba(0,0,0,.12);
-  
+.gallery-coverflow{
+  display:flex;
+  gap:28px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  padding:35px 8vw 45px;
+  scrollbar-width:none;
 }
-.gallery-grid img:hover{
 
-transform:translateY(-8px) scale(1.03);
+.gallery-coverflow::-webkit-scrollbar{
+  display:none;
+}
 
-box-shadow:0 25px 60px rgba(0,0,0,.22);
+.gallery-item{
+  flex:0 0 320px;
+  height:420px;
+  border-radius:32px;
+  overflow:hidden;
+  scroll-snap-align:center;
+  position:relative;
+  box-shadow:0 25px 70px rgba(0,0,0,.22);
+  transform:scale(.86);
+  opacity:.55;
+  transition:.45s ease;
+  background:#fff;
+}
+
+.gallery-item.active{
+  transform:scale(1);
+  opacity:1;
+  box-shadow:0 35px 90px rgba(0,0,0,.32);
+}
+
+.gallery-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.gallery-item::after{
+  content:attr(data-title);
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:18px;
+  padding:12px 16px;
+  border-radius:999px;
+  background:rgba(255,255,255,.78);
+  backdrop-filter:blur(12px);
+  color:var(--dark);
+  font-weight:900;
+  text-align:center;
+}
+
+.gallery-controls{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  margin-top:10px;
+}
+
+.gallery-btn{
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  border:none;
+  cursor:pointer;
+  background:linear-gradient(135deg,var(--pink),var(--teal));
+  color:white;
+  font-size:24px;
+  box-shadow:0 12px 30px rgba(0,0,0,.18);
+}
+
+@media(max-width:900px){
+  .gallery-coverflow{
+    padding:25px 28px 38px;
+  }
+
+  .gallery-item{
+    flex:0 0 78vw;
+    height:420px;
+  }
+}
 
 }
 /* WHY */
@@ -538,30 +601,57 @@ footer{
       <span>Our Work</span>
       <h2>Nail Gallery</h2>
     </div>
+  </div>
 
-    <div class="gallery-grid">
+  <div class="gallery-stage">
+    <div class="gallery-coverflow" id="galleryCoverflow">
 
-<img src="images/nail01.jpg" alt="Pink Luxury Nail Design" loading="lazy">
+      <div class="gallery-item active" data-title="Pink Luxury Bow">
+        <img src="images/nail01.jpg" alt="Pink Luxury Bow Nails">
+      </div>
 
-<img src="images/nail02.jpg" alt="Black White Nail Design" loading="lazy">
+      <div class="gallery-item" data-title="Black & White Art">
+        <img src="images/nail02.jpg" alt="Black White Nail Design">
+      </div>
 
-<img src="images/nail03.jpg" alt="Cat Eye Chrome Nails" loading="lazy">
+      <div class="gallery-item" data-title="Chrome Cat Eye">
+        <img src="images/nail03.jpg" alt="Chrome Cat Eye Nails">
+      </div>
 
-<img src="images/nail04.jpg" alt="3D Pink French Nails" loading="lazy">
+      <div class="gallery-item" data-title="3D Floral French">
+        <img src="images/nail04.jpg" alt="3D Floral French Nails">
+      </div>
 
-<img src="images/nail05.jpg" alt="Halloween Nail Art" loading="lazy">
+      <div class="gallery-item" data-title="Pink Spider Art">
+        <img src="images/nail05.jpg" alt="Pink Spider Nail Art">
+      </div>
 
-<img src="images/nail06.jpg" alt="Elegant White Bow Nails" loading="lazy">
+      <div class="gallery-item" data-title="White Bow French">
+        <img src="images/nail06.jpg" alt="White Bow French Nails">
+      </div>
 
-<img src="images/nail07.jpg" alt="Luxury Floral Nails" loading="lazy">
+      <div class="gallery-item" data-title="Soft Pink 3D Flower">
+        <img src="images/nail07.jpg" alt="Soft Pink 3D Flower Nails">
+      </div>
 
-<img src="images/nail08.jpg" alt="Gold Chrome Nail Design" loading="lazy">
+      <div class="gallery-item" data-title="Gold Luxury Art">
+        <img src="images/nail08.jpg" alt="Gold Luxury Nail Art">
+      </div>
 
-<img src="images/nail09.jpg" alt="Green Leaf Nail Art" loading="lazy">
+      <div class="gallery-item" data-title="Green Leaf Design">
+        <img src="images/nail09.jpg" alt="Green Leaf Nail Design">
+      </div>
 
-<img src="images/nail10.jpg" alt="Pink French Nail Design" loading="lazy">
+      <div class="gallery-item" data-title="Classic Pink French">
+        <img src="images/nail10.jpg" alt="Classic Pink French Nails">
+      </div>
 
-</div>
+    </div>
+
+    <div class="gallery-controls">
+      <button class="gallery-btn" onclick="slideGallery(-1)">‹</button>
+      <button class="gallery-btn" onclick="slideGallery(1)">›</button>
+    </div>
   </div>
 </section>
 
