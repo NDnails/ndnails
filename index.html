@@ -183,19 +183,34 @@ nav{
 }
 
 /* GALLERY */
-.gallery-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:16px;
+..gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
 }
 .gallery-grid img{
-  height:260px;
-  border-radius:22px;
-  box-shadow:var(--shadow);
-  transition:.3s;
-}
-.gallery-grid img:hover{transform:scale(1.04)}
 
+    width:100%;
+    aspect-ratio:1/1;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+    transition:.35s;
+
+    cursor:pointer;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.12);
+  
+}
+.gallery-grid img:hover{
+
+transform:translateY(-8px) scale(1.03);
+
+box-shadow:0 25px 60px rgba(0,0,0,.22);
+
+}
 /* WHY */
 .why{
   background:
@@ -525,15 +540,28 @@ footer{
     </div>
 
     <div class="gallery-grid">
-      <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=900&q=80">
-      <img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=900&q=80">
-      <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=900&q=80">
-      <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=80">
-      <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=900&q=80">
-      <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=900&q=80">
-      <img src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?auto=format&fit=crop&w=900&q=80">
-      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80">
-    </div>
+
+<img src="images/nail01.jpg" alt="Pink Luxury Nail Design" loading="lazy">
+
+<img src="images/nail02.jpg" alt="Black White Nail Design" loading="lazy">
+
+<img src="images/nail03.jpg" alt="Cat Eye Chrome Nails" loading="lazy">
+
+<img src="images/nail04.jpg" alt="3D Pink French Nails" loading="lazy">
+
+<img src="images/nail05.jpg" alt="Halloween Nail Art" loading="lazy">
+
+<img src="images/nail06.jpg" alt="Elegant White Bow Nails" loading="lazy">
+
+<img src="images/nail07.jpg" alt="Luxury Floral Nails" loading="lazy">
+
+<img src="images/nail08.jpg" alt="Gold Chrome Nail Design" loading="lazy">
+
+<img src="images/nail09.jpg" alt="Green Leaf Nail Art" loading="lazy">
+
+<img src="images/nail10.jpg" alt="Pink French Nail Design" loading="lazy">
+
+</div>
   </div>
 </section>
 
